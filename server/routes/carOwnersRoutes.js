@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const carOwnersModel = mongoose.model('carOwners');
 const carOwnersController = require('../controllers/carOwnerController')(carOwnersModel);
 
-
 const carOwnersRouter = Router();
 
 const router = () => {
