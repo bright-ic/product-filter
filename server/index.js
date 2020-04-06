@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 
 require("./models/carOwners");
 
@@ -12,6 +13,7 @@ const db = mongoose.connect(DBConnection, { useUnifiedTopology: true, useNewUrlP
 
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

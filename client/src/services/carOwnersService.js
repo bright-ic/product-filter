@@ -6,7 +6,6 @@ export default {
       filter = JSON.stringify(filter);
       const url = `http://localhost:5000/api/v1/carowners/filter/?q=${filter}`;
       let res = await axios.get(url);
-      console.log(res.data);
       return res.data.data || {};
     }
     catch(err) {
