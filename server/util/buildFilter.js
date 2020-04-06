@@ -13,7 +13,6 @@ const buildFilterQuery = (filterOptions) => {
   if (typeof filterOptions.gender !== "undefined" && filterOptions.gender !== "") {
     query.gender = filterOptions.gender.charAt(0).toUpperCase() + filterOptions.gender.slice(1);
   }
-  console.log("query", query);
 
   return query;
 }

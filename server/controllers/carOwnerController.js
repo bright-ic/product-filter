@@ -6,9 +6,7 @@ const carOwnersController = (carOwnersModel) => {
     let response = { error: false, message: "", data: null };
     (async function asyncFunc() {
       try {
-        console.log('get all ');
         const carOwners = await carOwnersModel.find();
-        console.log(carOwners)
 
         if (carOwners === null || carOwners.length === 0) {
           response.message = "no record found";
@@ -29,8 +27,6 @@ const carOwnersController = (carOwnersModel) => {
   const getById = (req, res) => {
     let response = { error: false, message: "", data: null };
     const query = {id: parseInt(req.params.id)};
-    
-    console.log('By id', query);
     
     if(typeof query.id === "undefined") {
       response.message = "Id was not supplied";
@@ -60,10 +56,9 @@ const carOwnersController = (carOwnersModel) => {
 
   /* --------------- GET CAR OWNERS BASED ON FILTER PARAMETERS ------------------------------- */
   const getByFilter = (req, res) => {
-    console.log('By filter', req.query);
     let response = { error: false, message: "", data: null };
     const query = buildFilterQuery(req.query);
-    
+
     (async function asyncFunc() {
       try {
         const carOwners = await carOwnersModel.find(query);
