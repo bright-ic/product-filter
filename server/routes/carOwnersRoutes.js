@@ -1,5 +1,4 @@
 const { Router } = require('express');
-//const model = require('../models/carOwners');
 const mongoose = require('mongoose');
 const carOwnersModel = mongoose.model('carOwners');
 const carOwnersController = require('../controllers/carOwnerController')(carOwnersModel);

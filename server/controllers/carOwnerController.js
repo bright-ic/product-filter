@@ -63,21 +63,10 @@ const carOwnersController = (carOwnersModel) => {
     console.log('By filter', req.query);
     let response = { error: false, message: "", data: null };
     const query = buildFilterQuery(req.query);
-
-    let limit = typeof req.query.limit !== "undefined" ? req.query.limit  : 100;
-    if (typeof limit !== "number") {
-      limit = 100;
-    }
-    else {
-      limit = parseInt(limit);
-    }
-
+    
     (async function asyncFunc() {
       try {
-        const carOwners = await carOwnersModel.aggregate([
-          { $match: query },
-          { $limit: limit }
-        ]);
+        const carOwners = await carOwnersModel.find(query);
 
         if (carOwners === null || carOwners.length === 0) {
           response.message = "no record found";

@@ -1,36 +1,19 @@
 const buildFilterQuery = (filterOptions) => {
+  filterOptions = JSON.parse(filterOptions.q);
   const query = {};
-  if (typeof filterOptions.id !== "undefined") {
-    query.id = filterOptions.id;
+  if (typeof filterOptions.countries !== "undefined" && Array.isArray(filterOptions.countries) && filterOptions.countries.length > 0) {
+    query.country = {$in: filterOptions.countries};
   }
-  if (typeof filterOptions.first_name !== "undefined") {
-    query.first_name = filterOptions.first_name.toLowerCase();
+  if ((typeof filterOptions.start_year !== "undefined" && filterOptions.start_year !== "") && (typeof filterOptions.end_year !== "undefined" && filterOptions.end_year !== "" )) {
+    query.car_model_year =  {$lte: filterOptions.end_year, $gte: filterOptions.start_year};
   }
-  if (typeof filterOptions.last_name !== "undefined") {
-    query.last_name = filterOptions.last_name.toLowerCase();
+  if (typeof filterOptions.colors !== "undefined" && Array.isArray(filterOptions.colors) && filterOptions.colors.length > 0) {
+    query.car_color = {$in: filterOptions.colors};
   }
-  if (typeof filterOptions.email !== "undefined") {
-    query.email = filterOptions.email.toLowerCase();
+  if (typeof filterOptions.gender !== "undefined" && filterOptions.gender !== "") {
+    query.gender = filterOptions.gender.charAt(0).toUpperCase() + filterOptions.gender.slice(1);
   }
-  if (typeof filterOptions.country !== "undefined") {
-    query.country = filterOptions.country.toLowerCase();
-  }
-  if (typeof filterOptions.car_model !== "undefined") {
-    query.car_model = filterOptions.car_model.toLowerCase();
-  }
-  if (typeof filterOptions.car_model_year !== "undefined") {
-    query.car_model_year = filterOptions.car_model_year;
-  }
-  if (typeof filterOptions.car_color !== "undefined") {
-    query.car_color = filterOptions.car_color.toLowerCase();
-  }
-  if (typeof filterOptions.gender !== "undefined") {
-    query.gender = filterOptions.gender.toLowerCase();
-  }
-  if (typeof filterOptions.job_title !== "undefined") {
-    query.job_title = filterOptions.job_title.toLowerCase();
-  }
-
+  console.log("query", query);
 
   return query;
 }
