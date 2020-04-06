@@ -5,6 +5,78 @@
 body {
   margin: 0; 
   padding: 0;
+  background-color: #FAFBFC;
+  font-family: sans-serif, Arial;
+}
+
+.filter__cardContainer {
+  padding: 25px;
+}
+
+.filter__cardContainer .fillter__card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+  background-color: #ffffff;
+  border-right: 1px solid rgb(192, 193, 194);
+  border-left: 1px solid rgb(192, 193, 194);
+  border-bottom: 1px solid rgb(192, 193, 194);
+  box-shadow: -1px 1px 1px 1px rgba(192, 193, 194, .2);
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.filter__cardContainer .fillter__card > div {
+  width: 100%;
+  text-align: center;
+}
+.filter__cardContainer .fillter__card .filter__year {
+  font-size: 30px;
+  font-weight: bold;
+}
+.filter__cardContainer .fillter__card .filter__gender {
+  font-size: 18px;
+  padding-top: 20px;
+}
+.filter__cardContainer .fillter__card .filter__countries {
+  font-size: 16px;
+  padding-top: 25px;
+}
+.filter__cardContainer .fillter__card .filter__countries span {
+  background-color: rgba(192, 193, 194, .4);
+  border-radius: 25px;
+  padding:8px 10px;
+  margin-left: 4px;
+  margin-top: 20px;
+}
+.filter__cardContainer .fillter__card .filter__countries :first-child {
+  margin-left: 0px;
+}
+.filter__cardContainer .fillter__card .filter__colors {
+  padding-top: 25px;
+}
+.filter__cardContainer .fillter__card .filter__colors span {
+  border-radius: 50%;
+  padding:2px 11px;
+  margin-left: 8px;
+  margin-top: 20px;
+}
+.loading {
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 767.99px) {
+  .filter__cardContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .filter__cardContainer .fillter__card{
+    width: 100%;
+  }
 }
 
 @keyframes App-logo-spin {
