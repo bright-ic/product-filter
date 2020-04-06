@@ -1,24 +1,25 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import './App.css';
 import Filter from "./components/filter/filter";
+import CarOwners from "./components/carowners/carOwners"
 import filterService from "./services/filterServices";
 import carOwnersService from "./services/carOwnersService";
 import {Loading} from "./components/loading";
 
 const  App = () => {
-  const [filters, setFilters] = useState({isLoading: true, msg: '', data: {}});
+  const [filters, setFilters] = useState({});
   const [selectedFilter, setSelectedFilter] = useState({});
   const [carOwners, setCarOwners] = useState([]);
   const [loader, setLoader] = useState({isLoading:true, msg:''});
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
-    if(Object.values(filters.data).length === 0) {
+    if(Object.values(filters).length === 0) {
       getFilters();
     }
 
     if(Object.values(selectedFilter).length > 0) {
       setLoader({isLoading:true});
-      console.log("pulling carOwners from backend")
       getCarOwners(selectedFilter);
     }
 
@@ -31,10 +32,9 @@ const  App = () => {
       setLoader({...loader, isLoading:false, msg: "Sorry! something broke. Check your network connection"});
     }
     else {
-      setFilters({...filters, data});
+      setFilters(data);
       setLoader({...loader, isLoading:false});
     }
-    console.log("filter values,", data);
   }
 
   const getCarOwners = async (filter) => {
@@ -46,24 +46,32 @@ const  App = () => {
       setCarOwners(data);
       setLoader({...loader, isLoading:false});
     }
+    setShowFilter(false);
     console.log("filter values,", data);
   }
 
   const selectedFilterHandler = useCallback((id)=> {
-    console.log("id selected is: "+id);
-    setSelectedFilter(filters.data[id]);
+    setSelectedFilter(filters[id]);
   })
 
   if(loader.isLoading) {
     return <Loading/>
   }
 
-  return (
-    <Filter
-    filters = {Object.values(filters.data)}
-    selectedFilterHandler={selectedFilterHandler}
-    />
-  );
+  if(showFilter) {
+    return (
+      <Filter
+      filters = {Object.values(filters)}
+      selectedFilterHandler={selectedFilterHandler}
+      />
+    );
+  }
+  else {
+    return (
+      <CarOwners/>
+    );
+  }
+ 
 }
 
 export default App;
