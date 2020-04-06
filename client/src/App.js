@@ -11,7 +11,7 @@ const  App = () => {
   const [selectedFilter, setSelectedFilter] = useState({});
   const [carOwners, setCarOwners] = useState([]);
   const [loader, setLoader] = useState({isLoading:true, msg:''});
-  const [showFilter, setShowFilter] = useState(false);
+  const [showFilter, setShowFilter] = useState(true);
 
   useEffect(() => {
     if(Object.values(filters).length === 0) {
@@ -47,7 +47,6 @@ const  App = () => {
       setLoader({...loader, isLoading:false});
     }
     setShowFilter(false);
-    console.log("filter values,", data);
   }
 
   const selectedFilterHandler = useCallback((id)=> {
@@ -68,7 +67,7 @@ const  App = () => {
   }
   else {
     return (
-      <CarOwners/>
+      <CarOwners carowners={carOwners} />
     );
   }
  

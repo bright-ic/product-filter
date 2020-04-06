@@ -4,7 +4,9 @@ const CreateSpan = ({value, wht}) => (<span style={wht==="color" ? {backgroundCo
 
 export const FilterCard = ({start_year, end_year, gender, countries, colors, selectedFilterHandler, id}) => {
   return (
-  <div className="fillter__card" onClick={()=> selectedFilterHandler(id)}>
+    
+  <div className="fillter__card">
+    <button className="card_button" onClick={()=> selectedFilterHandler(id)}>
     <div className="filter__year">{start_year} - {end_year} </div>
   {gender && (<div className="filter__gender">{gender}</div>)}
   {countries.length > 0 && (
@@ -17,6 +19,7 @@ export const FilterCard = ({start_year, end_year, gender, countries, colors, sel
     {colors.map((color, index) => <CreateSpan key={index} value={color} wht="color" /> )}
   </div>
   )}
+  </button>
   </div>
   );
 }

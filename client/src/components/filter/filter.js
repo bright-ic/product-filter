@@ -1,16 +1,14 @@
 import React from "react";
 import {FilterCard} from "./filterCard";
+import filterIcon from "../../images/filter.png";
 
 
 const Filter = ({filters, selectedFilterHandler}) => {
 
-  if(filters.length === 0) {
-    return (<div className="container">No filter found</div>)
-  }
-
   return (
     <div className="filter__cardContainer">
-      {filters ? (
+      <div className="filter_title"><img src={filterIcon} className="filterIcon" alt="filter"/> <div className="filter_pad">Filter</div></div>
+      {filters && filters.length > 0 ? (
        filters.map(filter => (
         <FilterCard 
         key={filter.id}

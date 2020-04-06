@@ -25,6 +25,21 @@ body {
   border-radius: 15px;
   margin-bottom: 20px;
 }
+.filterIcon {
+  width: 30px;
+  height: 40px;
+  float: left;
+}
+.filter_title {
+  margin-bottom: 40px;
+  font-size: 30px;
+  vertical-align: middle;
+}
+.filter_title .filter_pad {
+  padding-top: 5px;
+  padding-left: 5px;
+  display: inline-block;
+}
 .filter__cardContainer .fillter__card > div {
   width: 100%;
   text-align: center;
@@ -40,6 +55,10 @@ body {
 .filter__cardContainer .fillter__card .filter__countries {
   font-size: 16px;
   padding-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 .filter__cardContainer .fillter__card .filter__countries span {
   background-color: rgba(192, 193, 194, .4);
@@ -53,14 +72,18 @@ body {
 }
 .filter__cardContainer .fillter__card .filter__colors {
   padding-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 .filter__cardContainer .fillter__card .filter__colors span {
   border-radius: 50%;
-  padding:2px 11px;
+  padding:11px 11px;
   margin-left: 8px;
   margin-top: 20px;
 }
-.loading {
+.loading, .container {
   font-size: 16px;
   text-align: center;
   width: 100%;
@@ -82,14 +105,19 @@ body {
 }
 .carowners__card .carowner__carimage_container {
   width: 100%;
+  text-align: center;
 }
 .carowners__card .carowner__carimage_container img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    max-width: 309px;
+    height: auto;
+    max-height: 309px;
 }
 
 .carowners__card .carowner__detail {
   flex: 1;
+  display: flex;
+  flex-wrap: wrap;
   margin-left: 20px;
   font-size: 18px;
 }
@@ -99,6 +127,7 @@ body {
 }
 .carowners__card .carowner__detail .carowners_car_nfo {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   align-items: flex-start;
   padding-top: 20px;
@@ -131,6 +160,7 @@ body {
 
 .carowners__card .carowner__detail .carowners_info {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   align-items: flex-start;
   padding-top: 20px;
@@ -150,7 +180,16 @@ body {
   padding-top: 20px;
 }
 .carowners__card .carowner__detail .carowners__bio {
+  display: flex;
+  flex-wrap: wrap;
   padding-top: 0px;
+  width: 100%;
+}
+.carowners__card .carowner__detail .carowners__bio .subheading {
+  width: 100%;
+}
+.carowners__card .carowner__detail .carowners__bio .bio_detail {
+  flex: 1;;
 }
 @media screen and (min-width: 767.99px) {
   .container {
@@ -164,9 +203,26 @@ body {
   .filter__cardContainer .fillter__card{
     width: 100%;
   }
+  .carowners__card .carowner__detail {
+    justify-content: left;
+  }
   .carowners__card .carowner__carimage_container {
     width: 30%;
   }
+  .carowners__card .carowner__carimage_container img {
+    width: 100%;
+    height: auto;
+  }
+  .carowners__card .carowner__detail .carowners__bio .subheading {
+    width: 40px;
+  }
+}
+
+.card_button {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
 }
 
 @keyframes App-logo-spin {
