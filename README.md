@@ -14,5 +14,8 @@ by the user.
 5. cd back to the root directory.
 6. Start the development server eg npm run dev.
 
+## Running Unit Test
+1. cd into client directory the run, npm run test
+
 ## Development Stack
 Full Stack (Javascript, Node js, Express, react js)
