@@ -1,15 +1,16 @@
 import axios from 'axios';
 
+const baseUrl = process.env.NODE_ENV == "production" ? "" : "http://localhost:5000/";
+
 export default {
   getCarOwners: async (filter) => {
     try {
       filter = JSON.stringify(filter);
-      const url = `http://localhost:5000/api/v1/carowners/filter/?q=${filter}`;
+      const url = `${baseUrl}/api/v1/carowners/filter/?q=${filter}`;
       let res = await axios.get(url);
       return res.data.data || {};
     }
     catch(err) {
-      console.log("error: " + err.message);
       return err.message;
     }
   }
