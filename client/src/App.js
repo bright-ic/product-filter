@@ -5,6 +5,7 @@ import CarOwners from "./components/carowners/carOwners"
 import filterService from "./services/filterServices";
 import carOwnersService from "./services/carOwnersService";
 import {Loading} from "./components/loading";
+import {Header} from "./components/header";
 
 const  App = () => {
   const [filters, setFilters] = useState({});
@@ -51,25 +52,30 @@ const  App = () => {
 
   const selectedFilterHandler = useCallback((id)=> {
     setSelectedFilter(filters[id]);
-  })
+  });
+
+  const showHomePage = () => {
+    if(!showFilter) {
+      setShowFilter(true);
+      setSelectedFilter({});
+    }
+  }
 
   if(loader.isLoading) {
     return <Loading/>
   }
 
-  if(showFilter) {
-    return (
-      <Filter
+  return (
+    <>
+    <Header showHomePage={showHomePage} />
+    {showFilter ? 
+    ( <Filter
       filters = {Object.values(filters)}
       selectedFilterHandler={selectedFilterHandler}
-      />
-    );
-  }
-  else {
-    return (
-      <CarOwners carowners={carOwners} />
-    );
-  }
+      />) : 
+    ( <CarOwners carowners={carOwners} />)}
+    </>
+  );
  
 }
 
