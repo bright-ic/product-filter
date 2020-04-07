@@ -6,7 +6,10 @@ body {
   margin: 0; 
   padding: 0;
   background-color: #FAFBFC;
-  font-family: sans-serif, Arial;
+  font-family: sans-serif, Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 header {
   display: flex;
@@ -70,7 +73,7 @@ header button {
 }
 .filter__cardContainer .fillter__card .filter__countries {
   font-size: 16px;
-  padding-top: 25px;
+  padding-top: 0px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -87,7 +90,7 @@ header button {
   margin-left: 0px;
 }
 .filter__cardContainer .fillter__card .filter__colors {
-  padding-top: 25px;
+  padding-top: 0px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
