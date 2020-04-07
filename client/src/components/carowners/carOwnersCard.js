@@ -9,14 +9,14 @@ export const CardOwnersCard = ({carowner}) => (
     <div className="carowner__detail">
       <div className="carowners__name">{carowner.first_name} {carowner.last_name}</div>
       <div className="carowners_car_nfo">
-        <div><div className="subheading">Brand</div><br/>{carowner.car_model}</div>
-        <div><div className="subheading">Year</div><br/>{carowner.car_model_year}</div>
-        <div><div className="subheading">Color</div><br/><span className="car_color" style={{backgroundColor:carowner.car_color}}></span></div>
+        <div><div className="subheading">Brand</div>{carowner.car_model}</div>
+        <div><div className="subheading">Year</div>{carowner.car_model_year}</div>
+        <div><div className="subheading">Color</div><span className="car_color" style={{backgroundColor:carowner.car_color}}></span></div>
       </div>
       <div className="carowners_info">
-        <div><div className="subheading">Country</div><br/>{carowner.country}</div>
-        <div><div className="subheading">Gender</div><br/>{carowner.gender}</div>
-        <div><div className="subheading">Job</div><br/>{carowner.job_title}</div>
+        <div><div className="subheading">Country</div>{carowner.country}</div>
+        <div><div className="subheading">Gender</div>{carowner.gender}</div>
+        <div><div className="subheading">Job</div>{carowner.job_title}</div>
       </div>
       <div className="carowners__email"><span className="subheading">Email:</span> {carowner.email}</div>
       <div className="carowners__bio"><div className="subheading">Bio:</div><div className="bio_detail"> {carowner.bio}</div></div>
