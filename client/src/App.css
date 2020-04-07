@@ -137,7 +137,7 @@ header button {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 20px;
+  margin-left: 0px;
   font-size: 18px;
 }
 .carowners__card .carowner__detail .carowners__name {
@@ -149,6 +149,7 @@ header button {
   flex-wrap: wrap;
   width: 100%;
   align-items: flex-start;
+  justify-content: flex-start;
   padding-top: 20px;
 }
 .carowners__card .carowner__detail .carowners_car_nfo > div {
@@ -181,12 +182,15 @@ header button {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: flex-start;
+  text-align: left;
   align-items: flex-start;
   padding-top: 20px;
 }
 .carowners__card .carowner__detail .carowners_info > div {
   display: inline-block;
   padding-right: 10px;
+  text-align: left;
   padding-left: 10px;
 }
 .carowners__card .carowner__detail .carowners_info > div:first-of-type {
@@ -197,10 +201,13 @@ header button {
 }
 .carowners__card .carowner__detail .carowners__email {
   padding-top: 20px;
+  text-align: left;
 }
 .carowners__card .carowner__detail .carowners__bio {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: left;
   padding-top: 0px;
   width: 100%;
 }
@@ -225,6 +232,7 @@ header button {
   }
   .carowners__card .carowner__detail {
     justify-content: left;
+    margin-left: 20px;
   }
   .carowners__card .carowner__carimage_container {
     width: 30%;
