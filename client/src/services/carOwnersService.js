@@ -8,7 +8,7 @@ export default {
       filter = JSON.stringify(filter);
       const url = `${baseUrl}/api/v1/carowners/filter/?q=${filter}`;
       let res = await axios.get(url);
-      return res.data.data || {};
+      return res.data.data || [];
     }
     catch(err) {
       return err.message;
