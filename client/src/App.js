@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useReducer} from 'react';
 import './App.css';
 import Filter from "./components/filter/filter";
 import CarOwners from "./components/carowners/carOwners"
@@ -6,74 +6,80 @@ import filterService from "./services/filterServices";
 import carOwnersService from "./services/carOwnersService";
 import {Loading} from "./components/loading";
 import {Header} from "./components/header";
+import {reducer} from "./reducer/reducer";
 
+const initialState = {filters:{}, selectedFilter:{}, carOwners:[], loader:{isLoading:true, msg:''}, showFilter:true};
 const  App = () => {
-  const [filters, setFilters] = useState({});
-  const [selectedFilter, setSelectedFilter] = useState({});
-  const [carOwners, setCarOwners] = useState([]);
-  const [loader, setLoader] = useState({isLoading:true, msg:''});
-  const [showFilter, setShowFilter] = useState(true);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if(Object.values(filters).length === 0) {
+    if(Object.values(state.filters).length === 0) {
       getFilters();
     }
 
-    if(Object.values(selectedFilter).length > 0) {
-      setLoader({isLoading:true});
-      getCarOwners(selectedFilter);
+    if(Object.values(state.selectedFilter).length > 0) {
+      dispatch({type:"setLoader", payload: {isLoading:true}});
+      getCarOwners(state.selectedFilter);
     }
 
     return ()=> {}
-  },[selectedFilter]);
+  },[state.selectedFilter]);
 
   const getFilters = async () => {
-    let data = await filterService.getFilters();
-    if( typeof data == "string") {
-      setLoader({...loader, isLoading:false, msg: "Sorry! something broke. Check your network connection"});
+    try {
+      let data = await filterService.getFilters();
+      if( typeof data == "string") {
+        dispatch({type:"setLoader", payload: {isLoading:false, msg: "Sorry! something broke. Check your network connection"}});
+      }
+      else {
+        dispatch({type:"setFilters", payload:data});
+      }
     }
-    else {
-      setFilters(data);
-      setLoader({...loader, isLoading:false});
+    catch(err) {
+      alert(err.message);
     }
   }
 
   const getCarOwners = async (filter) => {
-    let data = await carOwnersService.getCarOwners(filter);
-    if( typeof data == "string") {
-      setLoader({...loader, isLoading:false, msg: "Sorry! something broke. Check your network connection"});
+    try {
+      let data = await carOwnersService.getCarOwners(filter);
+      if( typeof data == "string") {
+        dispatch({type:"setLoader", payload: {isLoading:false, msg: "Sorry! something broke. Check your network connection"}});
+      }
+      else {
+        dispatch({type:"setCarOwners", payload:data});
+      }
+      dispatch({type:"setShowFilter", payload:false});
     }
-    else {
-      setCarOwners(data);
-      setLoader({...loader, isLoading:false});
+    catch(err) {
+      alert(err.message);
     }
-    setShowFilter(false);
   }
 
   const selectedFilterHandler = useCallback((id)=> {
-    setSelectedFilter(filters[id]);
+    dispatch({type:"setSelectedFilter", payload: state.filters[id]});
   });
 
   const showHomePage = () => {
-    if(!showFilter) {
-      setShowFilter(true);
-      setSelectedFilter({});
+    if(!state.showFilter) {
+      dispatch({type:"setShowFilter", payload:true});
+      dispatch({type:"setSelectedFilter", payload: {}});
     }
   }
 
-  if(loader.isLoading) {
+  if(state.loader.isLoading) {
     return <Loading/>
   }
 
   return (
     <>
     <Header showHomePage={showHomePage} />
-    {showFilter ? 
+    {state.showFilter ? 
     ( <Filter
-      filters = {Object.values(filters)}
+      filters = {Object.values(state.filters)}
       selectedFilterHandler={selectedFilterHandler}
       />) : 
-    ( <CarOwners carowners={carOwners} />)}
+    ( <CarOwners carowners={state.carOwners} />)}
     </>
   );
  
