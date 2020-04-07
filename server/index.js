@@ -14,16 +14,8 @@ const db = mongoose.connect(DBConnection, { useUnifiedTopology: true, useNewUrlP
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('client/build'));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-
-  const path = require('path');
-  app.get('*', (req,res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
-
-}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
@@ -35,5 +27,10 @@ const APIRouteManager = require("./routes/APIRouteManager");
 
 // ADD ROUTES AS MIDDLEWARE
 app.use("/api", APIRouteManager(app));
+
+const path = require('path');
+  app.get('*', (req,res) => {
+      res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+  })
 
 module.exports = app;

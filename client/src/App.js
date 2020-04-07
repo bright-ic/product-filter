@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback, useReducer} from 'react';
+import React, {useEffect, useCallback, useReducer} from 'react';
 import './App.css';
 import Filter from "./components/filter/filter";
 import CarOwners from "./components/carowners/carOwners"
