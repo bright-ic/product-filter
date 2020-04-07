@@ -7,6 +7,7 @@ import carOwnersService from "./services/carOwnersService";
 import {Loading} from "./components/loading";
 import {Header} from "./components/header";
 
+const initialState = {filters:{}, selectedFilter:{}, carOwners:[], loader:{isLoading:true, msg:''}, showFilter:true};
 const  App = () => {
   const [filters, setFilters] = useState({});
   const [selectedFilter, setSelectedFilter] = useState({});
