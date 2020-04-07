@@ -1,31 +1,249 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; 
+  padding: 0;
+  background-color: #FAFBFC;
+  font-family: sans-serif, Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding:15px;
+  margin: 0;
+}
+header button {
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  font-size: 18px;
+  color: #000000;
+  cursor: pointer;
+}
+.filter__cardContainer, .container {
+  padding: 25px;
+}
+.filter__cardContainer .fillter__card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+  background-color: #ffffff;
+  border-right: 1px solid rgb(192, 193, 194);
+  border-left: 1px solid rgb(192, 193, 194);
+  border-bottom: 1px solid rgb(192, 193, 194);
+  box-shadow: -1px 1px 1px 1px rgba(192, 193, 194, .2);
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.filterIcon {
+  width: 30px;
+  height: 40px;
+  float: left;
+}
+.filter_title {
+  margin-bottom: 40px;
+  font-size: 30px;
+  vertical-align: middle;
+}
+.filter_title .filter_pad {
+  padding-top: 5px;
+  padding-left: 5px;
+  display: inline-block;
+}
+.filter__cardContainer .fillter__card > div {
+  width: 100%;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.filter__cardContainer .fillter__card .filter__year {
+  font-size: 30px;
+  font-weight: bold;
+}
+.filter__cardContainer .fillter__card .filter__gender {
+  font-size: 18px;
+  padding-top: 20px;
+}
+.filter__cardContainer .fillter__card .filter__countries {
+  font-size: 16px;
+  padding-top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.filter__cardContainer .fillter__card .filter__countries span {
+  background-color: rgba(192, 193, 194, .4);
+  border-radius: 25px;
+  padding:8px 10px;
+  margin-left: 4px;
+  margin-top: 20px;
+}
+.filter__cardContainer .fillter__card .filter__countries :first-child {
+  margin-left: 0px;
+}
+.filter__cardContainer .fillter__card .filter__colors {
+  padding-top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.filter__cardContainer .fillter__card .filter__colors span {
+  border-radius: 50%;
+  padding:11px 11px;
+  margin-left: 8px;
+  margin-top: 20px;
+}
+.loading, .container {
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.carowners__card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+  background-color: #ffffff;
+  border: 1px solid rgb(192, 193, 194);
+  border-bottom: 1px solid rgb(192, 193, 194);
+  box-shadow: -1px 1px 1px 1px rgba(192, 193, 194, .2);
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.carowners__card .carowner__carimage_container {
+  width: 100%;
+  text-align: center;
+}
+.carowners__card .carowner__carimage_container img {
+    width: 100%;
+    max-width: 309px;
+    height: auto;
+    max-height: 309px;
+}
+
+.carowners__card .carowner__detail {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  font-size: 18px;
+}
+.carowners__card .carowner__detail .carowners__name {
+  font-size: 22px;
+  color: rgb(51, 51, 51);
+}
+.carowners__card .carowner__detail .carowners_car_nfo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+.carowners__card .carowner__detail .carowners_car_nfo > div {
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right: 1px solid #000000;
+}
+.carowners__card .carowner__detail .carowners_car_nfo > div:first-of-type {
+  padding-left: 0;
+}
+.carowners__card .carowner__detail .carowners_car_nfo > div:last-of-type {
+  padding-right: 0;
+  border-right: 0;
+}
+.carowners__card .carowner__detail .carowners_car_nfo .car_color {
+  border-radius: 50%;
+  font-size: 16px;
+  padding:1px 10px;
+  margin-left: 8px;
+  margin-top: 20px;
+}
+.carowners__card .carowner__detail .subheading {
+  padding-bottom: 10px;
+  color: #6b6a6a;
+  display: inline-block;
+}
+
+.carowners__card .carowner__detail .carowners_info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+.carowners__card .carowner__detail .carowners_info > div {
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.carowners__card .carowner__detail .carowners_info > div:first-of-type {
+  padding-left: 0;
+}
+.carowners__card .carowner__detail .carowners_info > div:last-of-type {
+  padding-right: 0;
+}
+.carowners__card .carowner__detail .carowners__email {
+  padding-top: 20px;
+}
+.carowners__card .carowner__detail .carowners__bio {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 0px;
+  width: 100%;
+}
+.carowners__card .carowner__detail .carowners__bio .subheading {
+  width: 100%;
+}
+.carowners__card .carowner__detail .carowners__bio .bio_detail {
+  flex: 1;
+  text-align: left;
+}
+@media screen and (min-width: 767.99px) {
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .filter__cardContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .filter__cardContainer .fillter__card{
+    width: 100%;
+  }
+  .carowners__card .carowner__detail {
+    justify-content: left;
+  }
+  .carowners__card .carowner__carimage_container {
+    width: 30%;
+  }
+  .carowners__card .carowner__carimage_container img {
+    width: 100%;
+    height: auto;
+  }
+  .carowners__card .carowner__detail .carowners__bio .subheading {
+    width: 40px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+.card_button {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
